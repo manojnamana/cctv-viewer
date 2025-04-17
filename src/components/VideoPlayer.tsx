@@ -263,13 +263,18 @@ const VideoPlayer = () => {
                 display: 'none', 
               },pb:2 }}>
               {cameras.map((camera) => (
-                <>
-                <Grid size={{xs: 12,md: 6}} key={camera.id}>
-                  <Paper elevation={2} sx={{ p: 1 }}>
-                    <Typography variant="subtitle2" gutterBottom>
+                <Card elevation={0} sx={{width: '100%',display: 'flex',mb:2,p:2,gap:2,
+                  border:1,borderColor:'lightgrey',
+                }} >
+                <Grid size={{xs: 12,md: 6}}  key={camera.id}>
+                  <Paper elevation={0} sx={{border:1,pt:0,borderColor:'lightgrey',}}>
+                  <Stack width={"100%"} >
+                    <Typography variant="subtitle2"gutterBottom sx={{backgroundColor: 'whitesmoke',width: '100%',
+                      p:1}}>
                       Camera {camera.id}
                     </Typography>
-                    <Box sx={{width: '100%'}}>
+                    </Stack>
+                    <Box sx={{backgroundColor:'lightgrey'}}>
                       {hasWindow && (
                         <ReactPlayer 
                           url={camera.url}
@@ -283,15 +288,17 @@ const VideoPlayer = () => {
                     </Box>
                   </Paper>
                 </Grid>
-                <Grid size={{xs: 12,md: 6}}  >
-                <Paper elevation={2} sx={{width: '100%',height: '354px',overflowY:"auto",scrollbarWidth: 'none', // Firefox
+                  <Grid size={{xs: 12,md: 6}} >
+                <Paper elevation={0} sx={{width: '100%',height: '359px', border:1,borderColor:'lightgrey',
+                overflowY:"auto",
+                scrollbarWidth: 'none', // Firefox
                   '&::-webkit-scrollbar': {
                     display: 'none', 
                   }, }} >
 
                   <Stack width={"100%"} >
                       <Typography variant="subtitle2" gutterBottom 
-                       sx={{backgroundColor: 'lightblue',width: '100%',p:1,borderTopLeftRadius: 2,borderTopRightRadius: 2}}>
+                       sx={{backgroundColor: 'whitesmoke',width: '100%',p:1.5,}}>
                     Viloations Images From Camera {camera.id}
                   </Typography>
                   </Stack>
@@ -300,7 +307,7 @@ const VideoPlayer = () => {
                   <Stack spacing={2}p={1}>
                     {listViolation.map((violation) => (
                       <>
-                      <Card elevation={1}  sx={{width: '100%',p:1.5,bgcolor: 'whitesmoke',
+                      <Card elevation={0}  sx={{width: '100%',p:1.5,
                       display: 'flex',alignItems: 'start',justifyContent: 'space-between',
                       flexDirection: 'row',"&:hover":{
                         backgroundColor: 'lightgrey'
@@ -336,7 +343,7 @@ const VideoPlayer = () => {
 
                 </Paper>
               </Grid>
-              </>
+              </Card>
               ))}
             </Grid>
           )}
